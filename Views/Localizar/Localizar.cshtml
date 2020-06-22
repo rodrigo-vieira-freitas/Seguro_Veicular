@@ -1,0 +1,124 @@
+﻿@model WebSeguros.Models.Localizar
+
+@{
+    ViewData["Title"] = "Pesquisar os dados";
+}
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="~/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="~/css/jquery.fancybox.min.css">
+<link rel="stylesheet" href="~/css/owl.carousel.min.css">
+<link rel="stylesheet" href="~/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="~/fonts/flaticon/font/flaticon.css">
+<link rel="stylesheet" href="~/css/aos.css">
+
+<!-- MAIN CSS -->
+<link rel="stylesheet" href="~/css/style.css">
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+<link href="https://fonts.googleapis.com/css?family=DM+Sans:300,400,700&display=swap" rel="stylesheet">
+
+<style>
+
+    .col-centered {
+        float: none;
+        margin: 0 auto;
+    }
+</style>
+
+
+<script type="text/javascript">
+    function mCNPJ(cnpj) {
+        cnpj = cnpj.replace(/\D/g, "")
+        cnpj = cnpj.replace(/^(\d{2})(\d)/, "$1.$2")
+        cnpj = cnpj.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3")
+        cnpj = cnpj.replace(/\.(\d{3})(\d)/, ".$1/$2")
+        cnpj = cnpj.replace(/(\d{4})(\d)/, "$1-$2")
+        return cnpj
+    }
+    function mCPF(cpf) {
+        cpf = cpf.replace(/\D/g, "")
+        cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2")
+        cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2")
+        cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2")
+        return cpf
+    }
+
+    function mNum(num) {
+        num = num.replace(/\D/g, "")
+        return num
+    }</script>
+
+<br />
+
+<h2>Localizar</h2>
+
+<p>
+    <a asp-action="Create">Criar um novo</a>
+</p>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <h4 class="text-center">Dados pessoais</h4>
+            <hr />
+            <div class="row">
+                <div class="col-md-4 col-centered ">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Cpf" class="control-label"></label>
+                            <input asp-for="Cpf" class="form-control" onkeydown="javascript: fMasc( this, mCPF );" />
+                            <span asp-validation-for="Cpf" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Próximo" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cpf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCarro)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+            {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Cpf)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IdCliente)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IdCarro)
+    </td>
+    <td>
+        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+    </td>
+</tr>
+
+            </tbody>
+            </table>
+*@
